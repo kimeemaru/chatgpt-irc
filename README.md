@@ -6,8 +6,9 @@ An IRC bot that connects to Chat-GPT's davinci model via API and allows you inte
 2. Head to https://platform.openai.com/account/api-keys and generate a key. You will need an account.
 3. Replace "apikey" with your new key.
 4. Change the server settings to what you want.
-5. Under "response = openai.Completion.create" change the model settings if you feel like it.
-6. Change the number in "if i >= 10:" if you want to modify the max amount of lines the bot can send to your channel. Default: 10
+5. Change the prompt_base if you want extra customization for AI responses.
+6. Under "response = openai.Completion.create" change the model settings if you feel like it.
+7. Change the number in "if i >= 10:" if you want to modify the max amount of lines the bot can send to your channel. Default: 10
 
 Run it and you should be good to go! To chat with the bot, type in ChatGPT: Hi!
 
