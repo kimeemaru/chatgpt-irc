@@ -23,6 +23,8 @@ irc_ssl = context.wrap_socket(irc, server_hostname=server)
 irc_ssl.send(("USER " + botnick + " " + botnick + " " + botnick + " :I am a bot!\r\n").encode())
 irc_ssl.send(("NICK " + botnick + "\r\n").encode())
 
+prompt_base = "Roleplay as a ChatGPT bot. What would you like to do or say in response to the following prompt?"
+
 while True:
     data = irc_ssl.recv(4096).decode('utf-8')
     print(data)  # print all data received from server to console
@@ -36,7 +38,7 @@ while True:
             user = match.group(1)
             message = match.group(5)
             if message.startswith(botnick + ":"):
-                prompt = message.split(botnick + ":")[1]
+                prompt = prompt_base + " " + message.split(botnick + ":")[1]
                 try:
                     response = openai.Completion.create(
                         engine="text-davinci-003", # text-curie-001 is 10x cheaper and dumber
